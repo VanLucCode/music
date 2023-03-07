@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Music</title>
+        <meta charset="utf-8">
+        <title>Music</title>
+        <link rel="stylesheet" href="style.css">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <script src="https://kit.fontawesome.com/437b21ec86.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class="main">
+
+            <div class="top_bar">
+                <button><i class='bx bx-chevron-right' ></i></button>
+                <button><i class='bx bx-menu-alt-left' ></i></button>
+            </div>
+
+            <div class="playing_part">
+                <div class="img">
+                    <img src="anh1.jpg" alt="img">
+                </div>
+            </div>
+
+            <div class="control_part">
+                <div class="song_title">
+                    <p>HOUSE LAK 2023- VIET DEEP MIXSET</p>
+                    <audio id="song">
+                        <source src="house lak.mp3" type="audio/mpeg">
+                    </audio>
+                    <input type="range" value="0" id="progress">
+                    <div class="main_btns">
+                        <div><i class="fa-solid fa-backward"></i></div>
+                        <div onclick="playPause()"><i class="fa-solid fa-play" id="ctrlIcon"></i></div>
+                        <div><i class="fa-solid fa-forward"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            let progress = document.getElementById("progress");
+            let song = document.getElementById("song");
+            let ctrlIcon = document.getElementById("ctrlIcon");
+        
+            song.onloadedmetadata = function() {
+                progress.max = song.duration;
+            };
+        
+            function playPause() {
+                if (song.paused) {
+                    song.play();
+                    ctrlIcon.classList.remove("fa-play");
+                    ctrlIcon.classList.add("fa-pause");
+                } else {
+                    song.pause();
+                    ctrlIcon.classList.remove("fa-pause");
+                    ctrlIcon.classList.add("fa-play");
+                }
+            }
+        
+            song.addEventListener("canplay", function() {
+                setInterval(() => {
+                    progress.value = song.currentTime;
+                }, 500);
+            });
+        </script>
+        
+    </body>
+</html>

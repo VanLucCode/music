@@ -19,8 +19,11 @@
     width: 400px;
     height: 650px;
     border-radius: 18px;
-    background: #0f1a25;
+    background: rgba(255, 255, 255, 0.5);
     overflow: hidden;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    
   }
   
   .main .top_bar .options {
